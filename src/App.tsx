@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react';
+import { useAppDispatch, useAppSelector } from './redux/hooks';
 
-function App() {
+import { getCount, incrementCount } from './redux/reducers/mainSlice';
+import { UsersContainer } from './components/UsersContainer/UsersContainer';
+
+export const App: FC = () => {
+  const dispatch = useAppDispatch();
+  const count = useAppSelector(getCount);
+
+  const increment = () => {
+    dispatch(incrementCount(1))
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>{count}</h1>
+      <button type="button" onClick={increment}>Increment</button>
+      <UsersContainer />
+    </>
   );
 }
-
-export default App;

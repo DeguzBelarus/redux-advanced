@@ -1,0 +1,12 @@
+.UsersContainer {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: scroll;
+
+  button {
+    width: 50px;
+  }
+}
